@@ -21,8 +21,6 @@ private long id_dish;
 
 private String name;
 
-@OneToMany(mappedBy = "idDish")
-private List<Contains> contains;
 
 
 public long getId_dish() {

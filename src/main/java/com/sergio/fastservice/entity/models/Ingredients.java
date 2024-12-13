@@ -22,8 +22,6 @@ private long id_ingredient;
 
 private String name;
 
-@OneToMany(mappedBy = "idIngredient")
-private List<Contains> contains;
 
 
 public long getId_ingredient() {

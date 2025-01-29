@@ -20,7 +20,7 @@ public class DishesController {
  @Autowired
  DishServicelmpl dishesService;
  
- @GetMapping("/dishes")
+ @GetMapping("/dishes")	
  public List<Dishes> getAllIngredients(){
 	 return dishesService.getAll();
  }

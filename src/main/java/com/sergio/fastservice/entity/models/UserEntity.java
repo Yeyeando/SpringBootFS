@@ -1,50 +1,53 @@
 package com.sergio.fastservice.entity.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.*;
 
 @Entity
-@Getter
-@Setter
-@Table(name = "users")
+@Table (name = "users")
 public class UserEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @Column(unique = true, nullable = false)
-    private String username;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(nullable = false)
-    private String password;
+	@NotNull
+	private String username;
 
-    @Column(nullable = false)
-    private String role; // Ejemplo: "ROLE_USER" o "ROLE_ADMIN"
+	@NotNull
+	private String password;
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
+	public UserEntity(Long id, String username, String password) {
+		this.id = id;
 		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public String getRole() {
-		return role;
+	public UserEntity() {
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public Long getId() {
+		return id;
 	}
-    
-    
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public @NotNull String getUsername() {
+		return username;
+	}
+
+	public void setUsername(@NotNull String username) {
+		this.username = username;
+	}
+
+	public @NotNull String getPassword() {
+		return password;
+	}
+
+	public void setPassword(@NotNull String password) {
+		this.password = password;
+	}
+
 }

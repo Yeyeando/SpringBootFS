@@ -31,7 +31,7 @@ public class Dishes implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_table", nullable = false) // La columna que se usará para la clave foránea en la tabla de dishes
-    @JsonIgnore
+   
     private Tables table;  // Relación con la clase Tables
 
     @OneToMany(mappedBy = "dish", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

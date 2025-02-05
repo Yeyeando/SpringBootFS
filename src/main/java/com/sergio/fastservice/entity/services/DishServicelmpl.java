@@ -21,7 +21,6 @@ public class DishServicelmpl implements IDishService{
 		return (List<Dishes>) dishesDao.findAll();
 	}
 	
-	
 	@Override
 	public void post(Dishes dish) {
 		dishesDao.save(dish);

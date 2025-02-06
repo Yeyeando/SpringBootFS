@@ -2,6 +2,7 @@ package com.sergio.fastservice.controllers;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.sergio.fastservice.entity.models.Dishes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,12 +20,18 @@ import com.sergio.fastservice.entity.services.ContainServicelmpl;
 
 @RestController
 @CrossOrigin(origins ="*")
-@RequestMapping("/contains")
 public class ContainsController {
-    private final ContainServicelmpl containsService;
+
+    @Autowired
+    ContainServicelmpl containsService;
 
     public ContainsController(ContainServicelmpl containsService) {
         this.containsService = containsService;
+    }
+
+    @GetMapping("/contains")
+    public List<Contains> getAllContaints(){
+        return containsService.getAll();
     }
 
     // Obtener ingredientes por platillo

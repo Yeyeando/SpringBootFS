@@ -1,5 +1,5 @@
 package com.sergio.fastservice;
-//para commit
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

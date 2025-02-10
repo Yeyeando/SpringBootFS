@@ -38,6 +38,21 @@ public class IngredientsController {
         return ResponseEntity.ok(savedIngredient);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<IngredientsEntity> updateIngredient(@PathVariable Long id, @RequestBody IngredientsEntity ingredientDetails) {
+        Optional<IngredientsEntity> existingIngredient = ingredientsService.getIngredientById(id);
+
+        if (existingIngredient.isPresent()) {
+            IngredientsEntity ingredient = existingIngredient.get();
+            ingredient.setName(ingredientDetails.getName());
+
+            IngredientsEntity updatedIngredient = ingredientsService.saveOrUpdateIngredient(ingredient);
+            return ResponseEntity.ok(updatedIngredient);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteIngredientById(@PathVariable Long id) {
         try {

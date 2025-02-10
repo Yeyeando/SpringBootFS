@@ -38,6 +38,23 @@ public class TablesController {
         return ResponseEntity.ok(savedTable);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<TablesEntity> updateTable(@PathVariable Long id, @RequestBody TablesEntity tableDetails) {
+        Optional<TablesEntity> optionalTable = tablesService.getTableById(id);
+
+        if (optionalTable.isPresent()) {
+            TablesEntity table = optionalTable.get();
+            table.setNumber(tableDetails.getNumber());
+            table.setAvailability(tableDetails.isAvailability());
+            table.setDishes(tableDetails.getDishes());
+
+            TablesEntity updatedTable = tablesService.saveOrUpdateTable(table);
+            return ResponseEntity.ok(updatedTable);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTableById(@PathVariable Long id) {
         try {

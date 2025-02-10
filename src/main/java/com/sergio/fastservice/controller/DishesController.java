@@ -39,6 +39,24 @@ public class DishesController {
         return ResponseEntity.ok(savedDish);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<DishesEntity> updateDish(@PathVariable Long id, @RequestBody DishesEntity dish) {
+        Optional<DishesEntity> existingDishOpt = dishesService.getDishById(id);
+        if (existingDishOpt.isPresent()) {
+            DishesEntity existingDish = existingDishOpt.get();
+
+            existingDish.setName(dish.getName());
+            existingDish.setTable(dish.getTable());
+            existingDish.setContains(dish.getContains());
+
+            DishesEntity updatedDish = dishesService.saveOrUpdateDish(existingDish);
+
+            return ResponseEntity.ok(updatedDish);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDishById(@PathVariable Long id) {
         try {

@@ -40,6 +40,22 @@ public class ContainsController {
         return ResponseEntity.ok(savedContains);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ContainsEntity> updateContains(@PathVariable Long id, @RequestBody ContainsEntity containsDetails) {
+        Optional<ContainsEntity> existingContains = containsService.getContainsById(id);
+
+        if (existingContains.isPresent()) {
+            ContainsEntity containsEntity = existingContains.get();
+            containsEntity.setDishes(containsDetails.getDishes());
+            containsEntity.setIngredients(containsDetails.getIngredients());
+
+            ContainsEntity updatedContains = containsService.saveOrUpdateContains(containsEntity);
+            return ResponseEntity.ok(updatedContains);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteContainsById(@PathVariable Long id) {
         try {

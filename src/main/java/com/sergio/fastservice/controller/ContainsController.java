@@ -48,6 +48,7 @@ public class ContainsController {
             ContainsEntity containsEntity = existingContains.get();
             containsEntity.setDishes(containsDetails.getDishes());
             containsEntity.setIngredients(containsDetails.getIngredients());
+            containsEntity.setQuantity(containsDetails.getQuantity());
 
             ContainsEntity updatedContains = containsService.saveOrUpdateContains(containsEntity);
             return ResponseEntity.ok(updatedContains);

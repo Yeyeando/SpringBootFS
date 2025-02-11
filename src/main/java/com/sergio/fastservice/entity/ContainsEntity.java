@@ -21,10 +21,15 @@ public class ContainsEntity {
     @JoinColumn(name = "id_ingredient")
     private IngredientsEntity ingredients;
 
-    public ContainsEntity(Long id, DishesEntity dishes, IngredientsEntity ingredients) {
+    @NotNull
+    @Min(1)
+    private Integer quantity;
+
+    public ContainsEntity(Long id, DishesEntity dishes, IngredientsEntity ingredients, Integer quantity) {
         this.id = id;
         this.dishes = dishes;
         this.ingredients = ingredients;
+        this.quantity = quantity;
     }
 
     public ContainsEntity() {
@@ -52,5 +57,13 @@ public class ContainsEntity {
 
     public void setIngredients(IngredientsEntity ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

@@ -1,8 +1,7 @@
 package com.sergio.fastservice.controller;
 
 import com.sergio.fastservice.entity.ContainsEntity;
-import com.sergio.fastservice.entity.DishesEntity;
-import com.sergio.fastservice.entity.IngredientsEntity;
+import com.sergio.fastservice.entity.ContainsId;
 import com.sergio.fastservice.service.ContainsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,69 +14,60 @@ import java.util.Optional;
 @RequestMapping("/contains")
 public class ContainsController {
 
-    private final ContainsService containsService;
-
     @Autowired
-    public ContainsController(ContainsService containsService) {
-        this.containsService = containsService;
-    }
+    private ContainsService containsService;
 
     @GetMapping
     public List<ContainsEntity> getAllContains() {
         return containsService.getAllContains();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ContainsEntity> getContainsById(@PathVariable Long id) {
+    @GetMapping("/{idDish}/{idIngredient}")
+    public ResponseEntity<ContainsEntity> getContainsById(
+            @PathVariable Long idDish,
+            @PathVariable Long idIngredient) {
+        ContainsId id = new ContainsId(idDish, idIngredient);
         Optional<ContainsEntity> contains = containsService.getContainsById(id);
-        return contains.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+        return contains.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<ContainsEntity> saveOrUpdateContains(@RequestBody ContainsEntity containsEntity) {
-        ContainsEntity savedContains = containsService.saveOrUpdateContains(containsEntity);
-        return ResponseEntity.ok(savedContains);
+    public ContainsEntity createContains(@RequestBody ContainsEntity contains) {
+        return containsService.createContains(contains);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ContainsEntity> updateContains(@PathVariable Long id, @RequestBody ContainsEntity containsDetails) {
-        Optional<ContainsEntity> existingContains = containsService.getContainsById(id);
-
-        if (existingContains.isPresent()) {
-            ContainsEntity containsEntity = existingContains.get();
-            containsEntity.setDishes(containsDetails.getDishes());
-            containsEntity.setIngredients(containsDetails.getIngredients());
-            containsEntity.setQuantity(containsDetails.getQuantity());
-
-            ContainsEntity updatedContains = containsService.saveOrUpdateContains(containsEntity);
-            return ResponseEntity.ok(updatedContains);
-        } else {
+    @PutMapping("/{idDish}/{idIngredient}")
+    public ResponseEntity<ContainsEntity> updateContains(
+            @PathVariable Long idDish,
+            @PathVariable Long idIngredient,
+            @RequestBody ContainsEntity contains) {
+        ContainsId id = new ContainsId(idDish, idIngredient);
+        if (!containsService.getContainsById(id).isPresent()) {
             return ResponseEntity.notFound().build();
         }
+        contains.setId(id);
+        return ResponseEntity.ok(containsService.updateContains(contains));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteContainsById(@PathVariable Long id) {
-        try {
-            containsService.deleteContainsById(id);
-            return ResponseEntity.noContent().build();
-        } catch (RuntimeException e) {
+    @DeleteMapping("/{idDish}/{idIngredient}")
+    public ResponseEntity<Void> deleteContains(
+            @PathVariable Long idDish,
+            @PathVariable Long idIngredient) {
+        ContainsId id = new ContainsId(idDish, idIngredient);
+        if (!containsService.getContainsById(id).isPresent()) {
             return ResponseEntity.notFound().build();
         }
-    }
-
-    @GetMapping("/dish/{dishId}")
-    public List<ContainsEntity> getContainsByDish(@PathVariable Long dishId) {
-        DishesEntity dish = new DishesEntity();
-        dish.setId(dishId);
-        return containsService.findByDish(dish);
+        containsService.deleteContains(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/ingredient/{ingredientId}")
     public List<ContainsEntity> getContainsByIngredient(@PathVariable Long ingredientId) {
-        IngredientsEntity ingredient = new IngredientsEntity();
-        ingredient.setId(ingredientId);
-        return containsService.findByIngredient(ingredient);
+        return containsService.getContainsByIngredient(ingredientId);
+    }
+
+    @GetMapping("/dish/{dishId}")
+    public List<ContainsEntity> getContainsByDish(@PathVariable Long dishId) {
+        return containsService.getContainsByDish(dishId);
     }
 }

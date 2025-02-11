@@ -1,9 +1,8 @@
 package com.sergio.fastservice.service;
 
 import com.sergio.fastservice.entity.ContainsEntity;
+import com.sergio.fastservice.entity.ContainsId;
 import com.sergio.fastservice.repository.ContainsRepository;
-import com.sergio.fastservice.entity.DishesEntity;
-import com.sergio.fastservice.entity.IngredientsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,38 +12,35 @@ import java.util.Optional;
 @Service
 public class ContainsService {
 
-    private final ContainsRepository containsRepository;
-
     @Autowired
-    public ContainsService(ContainsRepository containsRepository) {
-        this.containsRepository = containsRepository;
-    }
+    private ContainsRepository containsRepository;
 
     public List<ContainsEntity> getAllContains() {
         return containsRepository.findAll();
     }
 
-    public Optional<ContainsEntity> getContainsById(Long id) {
+    public Optional<ContainsEntity> getContainsById(ContainsId id) {
         return containsRepository.findById(id);
     }
 
-    public ContainsEntity saveOrUpdateContains(ContainsEntity containsEntity) {
-        return containsRepository.save(containsEntity);
+    public ContainsEntity createContains(ContainsEntity contains) {
+        return containsRepository.save(contains);
     }
 
-    public void deleteContainsById(Long id) {
-        if (containsRepository.existsById(id)) {
-            containsRepository.deleteById(id);
-        } else {
-            throw new RuntimeException("El registro con ID " + id + " no existe.");
-        }
+    public ContainsEntity updateContains(ContainsEntity contains) {
+        return containsRepository.save(contains);
     }
 
-    public List<ContainsEntity> findByDish(DishesEntity dish) {
-        return containsRepository.findByDishes(dish);
+    public void deleteContains(ContainsId id) {
+        containsRepository.deleteById(id);
     }
 
-    public List<ContainsEntity> findByIngredient(IngredientsEntity ingredient) {
-        return containsRepository.findByIngredients(ingredient);
+    public List<ContainsEntity> getContainsByIngredient(Long ingredientId) {
+        return containsRepository.findByIngredientsId(ingredientId);
+    }
+
+    // Buscar relaciones por plato
+    public List<ContainsEntity> getContainsByDish(Long dishId) {
+        return containsRepository.findByDishesId(dishId);
     }
 }

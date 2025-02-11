@@ -7,25 +7,24 @@ import jakarta.validation.constraints.*;
 @Table(name = "contains")
 public class ContainsEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EmbeddedId
+    private ContainsId id;
 
     @ManyToOne
-    @NotNull
-    @JoinColumn(name = "id_dish")
+    @MapsId("idDish")
+    @JoinColumn(name = "id_dish", nullable = false)
     private DishesEntity dishes;
 
     @ManyToOne
-    @NotNull
-    @JoinColumn(name = "id_ingredient")
+    @MapsId("idIngredient")
+    @JoinColumn(name = "id_ingredient", nullable = false)
     private IngredientsEntity ingredients;
 
     @NotNull
     @Min(1)
     private Integer quantity;
 
-    public ContainsEntity(Long id, DishesEntity dishes, IngredientsEntity ingredients, Integer quantity) {
+    public ContainsEntity(ContainsId id, DishesEntity dishes, IngredientsEntity ingredients, Integer quantity) {
         this.id = id;
         this.dishes = dishes;
         this.ingredients = ingredients;
@@ -35,11 +34,11 @@ public class ContainsEntity {
     public ContainsEntity() {
     }
 
-    public Long getId() {
+    public ContainsId getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(ContainsId id) {
         this.id = id;
     }
 

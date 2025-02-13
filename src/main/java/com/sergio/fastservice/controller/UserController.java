@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/users")
@@ -20,6 +21,10 @@ public class UserController {
     public ResponseEntity<List<UserEntity>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
+
+    private static final Pattern PASSWORD_PATTERN = Pattern.compile(
+            "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$"
+    );
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserById(@PathVariable Long id) {
@@ -35,6 +40,13 @@ public class UserController {
         if (user.isPresent()) {
             UserEntity updatedUser = user.get();
             updatedUser.setUsername(userDetails.getUsername());
+
+            if (userDetails.getPassword() != null && !PASSWORD_PATTERN.matcher(userDetails.getPassword()).matches()) {
+                return ResponseEntity.badRequest().body("La contraseña debe tener al menos 8 caracteres, incluyendo una mayúscula, una minúscula y un número.");
+            }
+
+            updatedUser.setPassword(userDetails.getPassword());
+
             userService.saveUser(updatedUser);
             return ResponseEntity.ok("Usuario actualizado exitosamente.");
         }

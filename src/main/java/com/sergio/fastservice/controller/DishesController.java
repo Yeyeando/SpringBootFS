@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/dishes")
 public class DishesController {
 
     private final DishesService dishesService;
+
+    private static final Pattern NAME_PATTERN = Pattern.compile("^[A-Z][a-zA-Z]{2,}.*$");
 
     @Autowired
     public DishesController(DishesService dishesService) {
@@ -34,13 +37,21 @@ public class DishesController {
     }
 
     @PostMapping
-    public ResponseEntity<DishesEntity> saveOrUpdateDish(@RequestBody DishesEntity dish) {
+    public ResponseEntity<?> saveOrUpdateDish(@RequestBody DishesEntity dish) {
+        if (dish.getName() == null || !NAME_PATTERN.matcher(dish.getName()).matches()) {
+            return ResponseEntity.badRequest().body("Error: El nombre del plato debe comenzar con una mayúscula y tener al menos 3 caracteres.");
+        }
+
         DishesEntity savedDish = dishesService.saveOrUpdateDish(dish);
         return ResponseEntity.ok(savedDish);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DishesEntity> updateDish(@PathVariable Long id, @RequestBody DishesEntity dish) {
+    public ResponseEntity<?> updateDish(@PathVariable Long id, @RequestBody DishesEntity dish) {
+        if (dish.getName() == null || !NAME_PATTERN.matcher(dish.getName()).matches()) {
+            return ResponseEntity.badRequest().body("El nombre del plato debe comenzar con una mayúscula y tener al menos 3 caracteres.");
+        }
+
         Optional<DishesEntity> existingDishOpt = dishesService.getDishById(id);
         if (existingDishOpt.isPresent()) {
             DishesEntity existingDish = existingDishOpt.get();

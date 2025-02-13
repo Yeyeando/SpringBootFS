@@ -8,12 +8,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/ingredients")
 public class IngredientsController {
 
     private final IngredientsService ingredientsService;
+
+    private static final Pattern NAME_PATTERN = Pattern.compile(
+            "^[A-Z][a-zA-Z]{2,}$"
+    );
 
     @Autowired
     public IngredientsController(IngredientsService ingredientsService) {
@@ -33,16 +38,23 @@ public class IngredientsController {
     }
 
     @PostMapping
-    public ResponseEntity<IngredientsEntity> saveOrUpdateIngredient(@RequestBody IngredientsEntity ingredient) {
+    public ResponseEntity<?> saveOrUpdateIngredient(@RequestBody IngredientsEntity ingredient) {
+        if (!NAME_PATTERN.matcher(ingredient.getName()).matches()) {
+            return ResponseEntity.badRequest().body("Error: El nombre del ingrediente debe comenzar con una mayúscula y tener al menos 3 caracteres.");
+        }
         IngredientsEntity savedIngredient = ingredientsService.saveOrUpdateIngredient(ingredient);
         return ResponseEntity.ok(savedIngredient);
     }
 
+
     @PutMapping("/{id}")
-    public ResponseEntity<IngredientsEntity> updateIngredient(@PathVariable Long id, @RequestBody IngredientsEntity ingredientDetails) {
+    public ResponseEntity<?> updateIngredient(@PathVariable Long id, @RequestBody IngredientsEntity ingredientDetails) {
         Optional<IngredientsEntity> existingIngredient = ingredientsService.getIngredientById(id);
 
         if (existingIngredient.isPresent()) {
+            if (!NAME_PATTERN.matcher(ingredientDetails.getName()).matches()) {
+                return ResponseEntity.badRequest().body("Error: El nombre del ingrediente debe comenzar con una mayúscula y tener al menos 3 caracteres.");
+            }
             IngredientsEntity ingredient = existingIngredient.get();
             ingredient.setName(ingredientDetails.getName());
 

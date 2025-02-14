@@ -1,5 +1,6 @@
 package com.sergio.fastservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
@@ -13,11 +14,13 @@ public class ContainsEntity {
     @ManyToOne
     @MapsId("idDish")
     @JoinColumn(name = "id_dish", nullable = false)
+    @JsonIgnore
     private DishesEntity dishes;
 
     @ManyToOne
     @MapsId("idIngredient")
     @JoinColumn(name = "id_ingredient", nullable = false)
+    @JsonIgnore
     private IngredientsEntity ingredients;
 
     @NotNull

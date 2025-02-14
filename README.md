@@ -158,7 +158,43 @@ Prevención de errores: Se implementan medidas para prevenir errores comunes y p
 [Manual de usuario](https://docs.google.com/document/d/11mxM69mfPAsmIuoDagRmYYh0QC6FSdItTKOzNDq7ktE/edit?tab=t.0)
 
 ## 8. Tests
-...
+Para el frontend usamos Vitest para realizar los tests.
+
+El primer componente es Gallery. El componente muestra en pantalla las mesas que se encuentran en el json y navega a diferentes rutas, en función de la mesa clicada.
+
+![image](https://github.com/user-attachments/assets/9df18bb1-e3eb-4b2c-ae1a-ac62b73a5cf3)
+
+Ahora el test sirve para realizar las siguientes comprobaciones
+
+Renderiza correctamente las imágenes
+
+Muestra los identificadores de las imágenes
+
+Navega a la ruta correcta al hacer clic en una imagen
+
+![image](https://github.com/user-attachments/assets/569c09b7-4f0b-4c58-95f8-63a6ac23c957)
+
+![image](https://github.com/user-attachments/assets/d76e5c80-4cb9-410b-b76b-bf43f4d26dca)
+
+Ejecutamos los tests y comprobamos que el pasan las pruebas
+
+![image](https://github.com/user-attachments/assets/bed100ff-384a-41c3-b4c1-22ccf285e522)
+
+Tras comprobar que funciona, vamos a forzar fallos para ver si responden correctamente.
+
+Con el primer test comprobamos que las imágenes renderizan correctamente las imagenes y la cantidad esperada que tenemos en el json. 
+Para forzar el fallo, añadimos un +1 a la cantidad de tablas que hay en el json y que en vez de esperar la url, esperamos encontrar el id de la mesa.
+
+![image](https://github.com/user-attachments/assets/3dc91d11-3ff1-4be2-af05-bb878bdbf161)
+
+Si ejectuamos los tests ahora, dan estos errores
+
+![image](https://github.com/user-attachments/assets/7e188b0e-6f54-4284-a973-d4cea5a7db67)
+
+![image](https://github.com/user-attachments/assets/9416c595-8953-4c95-9d23-4c41162ec249)
+
+Estos son todos los tests del frontend: [Tests frontend](https://docs.google.com/document/d/1VJj4pZfKPVc6BACgD9SQVsDD0hF8Uub65KyjUkWprTo/edit?tab=t.0)
+
 
 ## 9. Pila tecnológica
 ### 9.1 Frontend

@@ -231,7 +231,12 @@ Este enfoque modular, con fases claras de diseño y desarrollo y el uso de herra
 
 
 ## Conclusiones
-...
+En conclusión, a lo largo de este proyecto hemos experimentado una notable evolución como equipo, fortaleciendo nuestra capacidad de trabajar colaborativamente y aprendiendo nuevas tecnologías de manera continua. Hemos logrado adquirir habilidades tanto en backend, utilizando Spring Boot y aprendiendo a conectar aplicaciones con bases de datos, como en frontend, con el uso de React y Vitest para garantizar la calidad del código. Este proceso no solo ha sido un reto técnico, sino también una oportunidad para mejorar nuestra capacidad de ser resolutivos, enfrentando desafíos y buscando soluciones de forma ágil y eficiente.
 
 ## Enlaces
-...
+[Github](https://github.com/)  
+[SpringBoot](https://docs.spring.io/spring-boot/documentation.html)  
+[Node.js](https://nodejs.org/es/learn/getting-started/introduction-to-nodejs)  
+[Figma](https://www.figma.com/)  
+[React](https://react.dev/learn)
+

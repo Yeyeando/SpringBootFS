@@ -59,20 +59,62 @@ Los camareros tienen todas las funciones del CRUD.
 
 
 ### Diagrama Relacional
-...
+Aquí se aprecian todas las relaciones que existen entre cada entidad. En este diagrama se especifica la clave tanto única como foránea, y entidades que existen.
 
+Camarero(id_user, username, password)
+Ingredientes(id_ingrediente, nombre)
+Platos(id_plato, nombre, id_mesa*)
+Contiene(id_plato*,id_ingrediente*, cantidad)
+Mesa(id_mesa, numero_mesa, disponibilidad, id_user*)
 ## Requisitos de usuarios
-...
+
+El usuario, para poder utilizar la aplicación, requiere principalmente un navegador web, conexión a internet y una cuenta de usuario activa.
+En lo que respecta al backend, es necesario disponer de los siguientes elementos:
+
+Java 17 o superior.
+
+Un IDE compatible con Spring Boot y Java.
+
+Maven como herramienta de gestión de dependencias y construcción.
+
+Para el frontend, se requieren los siguientes requisitos:
+
+Node.js v16 o superior.
+
+Vite como herramienta de construcción y desarrollo.
+
+Un IDE compatible con JavaScript y React.
+
+Por último, se requiere de una base de datos que podría ser  MySQL Workbench.
 
 ## Casos de uso
-...
+![image](https://github.com/user-attachments/assets/035c4cc3-0fd1-4322-b107-119d9797d07c)
+
 
 ## Descripción del sistema y especificaciones técnicas
 ### Descripción general del sistema
-...
+
+FastService es una plataforma diseñada para optimizar la comunicación entre el personal de servicio y la cocina en restaurantes y bares, mejorando así la eficiencia y reduciendo posibles errores en los pedidos.
+
+Frontend: Es una aplicación web interactiva desarrollada con React para ofrecer una experiencia de usuario fluida.
+
+Backend: El servidor está construido utilizando Spring Boot y Java 17, gestionando la lógica de negocio y las interacciones con la base de datos MySQL.
 
 ### Arquitectura del sistema
-...
+Frontend:
+
+Tecnologías utilizadas: React, Vite, CSS/HTML.
+
+La comunicación con el backend se realiza mediante APIs RESTful.
+
+Backend:
+
+Tecnologías utilizadas: Spring Boot, Java 17.
+
+Base de datos: MySQL.
+
+Repositorio de código disponible en GitHub.
+
 
 ### Especificaciones técnicas
 ...

@@ -154,7 +154,8 @@ Prevención de errores: Se implementan medidas para prevenir errores comunes y p
 
 
 ## Manuales
-...
+[Manual de instalación](https://docs.google.com/document/d/1rraouQFESCmMG4oPHARUDBl10KeKk-BKeC2EWpplWso/edit?tab=t.0)  
+[Manual de usuario](https://docs.google.com/document/d/11mxM69mfPAsmIuoDagRmYYh0QC6FSdItTKOzNDq7ktE/edit?tab=t.0)
 
 ## Tests
 ...

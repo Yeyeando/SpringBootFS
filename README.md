@@ -117,11 +117,41 @@ Repositorio de código disponible en GitHub.
 
 
 ### Especificaciones técnicas
-...
+Servidor: El sistema está alojado en un servidor compatible con Java y Spring Boot, y cuenta con una base de datos MySQL 8.
+
+Base de Datos: Relacional, con tablas que gestionan datos como Users, Exercises, Routines, entre otras.
+
+Frontend Web: La interfaz está desarrollada en React, con diseño adaptable para dispositivos móviles y de escritorio.
+
+Seguridad: Implementación de autenticación con JWT y almacenamiento seguro de contraseñas mediante bcrypt.
+
+Pruebas: Se utilizan Vitest para la realización de pruebas en el frontend.
 
 ## Interfaces
+Diseño inicial en [figma](https://www.figma.com/proto/YmeJx71puwIhbEWP09SIhE/restaurapp?node-id=0-1&t=qjselpiCkZ9ZYgjU-1)
+
+
 ### Usabilidad y accesibilidad
-...
+La aplicación ha sido diseñada con un enfoque en la usabilidad y accesibilidad, asegurando una experiencia inclusiva para todos los usuarios. Las medidas implementadas incluyen:
+
+Navegación en todas las páginas: La estructura permite una navegación fluida y consistente a través de todas las páginas.
+
+Contraste de colores: Se utiliza un contraste adecuado entre el texto y el fondo para facilitar la legibilidad.
+
+Páginas tituladas: Cada página cuenta con un título claro y descriptivo, mejorando la navegación y comprensión.
+
+Simplicidad: El diseño es simple y directo, evitando complejidad innecesaria.
+
+Secuencia significativa: El orden en que se presenta el contenido es lógico y sigue una estructura que respeta su significado.
+
+Elección de colores: Los colores utilizados son seleccionados para garantizar la visibilidad y accesibilidad.
+
+Tamaño del objetivo: Los botones y elementos interactivos tienen un tamaño adecuado para facilitar su selección.
+
+Lenguaje claro: El lenguaje utilizado en el sitio es sencillo y accesible, asegurando su comprensión por una audiencia diversa.
+
+Prevención de errores: Se implementan medidas para prevenir errores comunes y proporcionar retroalimentación clara en caso de que ocurran.
+
 
 ## Manuales
 ...
@@ -131,19 +161,74 @@ Repositorio de código disponible en GitHub.
 
 ## Pila tecnológica
 ### Frontend
-...
+Tecnologías: React, HTML. CSS y Vite,
+
+Comunicación con el backend a través de APIs RESTful.
 
 ### Backend
-...
+Tecnologías: Spring Boot, Java 17.
+
+Conexión a BBDD: MySQL.
+
+Enlace del Repositorio Backend
+
+Seguridad: Autenticación con JWT.
+
 
 ## Comparación de pila tecnológica
-...
+Frontend: Se enfoca en la interacción del usuario, utilizando React para interfaces dinámicas y herramientas como Vite para optimización y rapidez en el desarrollo.
+
+Backend: Maneja la lógica de negocio y el almacenamiento de datos, utilizando Spring Boot para la construcción de APIs y Java 17 para asegurar estabilidad y rendimiento, con MySQL como base de datos relacional.
+
+Autenticación: Se gestiona con JWT, con la misma base tecnológica (Java 17), permitiendo seguridad en las interacciones entre el frontend y el backend.
+
+En resumen, el frontend está centrado en la experiencia del usuario, el backend en la lógica y gestión de datos, y la autenticación se maneja de manera segura con JWT sobre Java 17, asegurando la integridad y privacidad de las sesiones de los usuarios.
+
 
 ## Repositorios
-...
+[Frontend](https://github.com/Yeyeando/FastServiceCoop)  
+
+[Backend](https://github.com/Yeyeando/SpringBootFS)
 
 ## Planificación
-...
+Fase de Bocetos (Pincel):
+
+Objetivo: Iniciar el proyecto visualizando ideas y conceptos preliminares.
+
+Herramienta: Usamos Pincel para crear bocetos rápidos y esquemas que nos ayuden a definir la estructura general del diseño.
+
+Actividad: El equipo hace representaciones visuales sencillas para explorar la disposición de los elementos, los colores, y las interacciones iniciales.
+
+Resultado esperado: Tener una guía visual básica de cómo debería lucir el producto final.
+
+Fase de Diseño Final (Figma):
+
+Objetivo: Refinar los bocetos iniciales y crear el diseño visual definitivo.
+
+Herramienta: Figma se utiliza para crear diseños interactivos y detallados con todos los elementos visuales, asegurando que la estética, la usabilidad y la funcionalidad estén bien definidos.
+
+Actividad:Crear maquetas de alta fidelidad, definir la paleta de colores, tipografías y otras directrices visuales. También se pueden hacer prototipos interactivos.
+
+Resultado esperado: Tener una versión final del diseño listo para la implementación en el frontend.
+
+Desarrollo (Frontend y Backend simultáneos):
+
+Objetivo: Desarrollar la funcionalidad del proyecto mientras se trabaja en la parte visual y de servidor.
+
+Herramienta:Usamos GitHub para coordinarnos y gestionar el código de manera eficiente.
+
+Actividad:
+
+El frontend trabaja en la parte visual e interactiva del proyecto, basándose en los diseños finales de Figma.
+
+El backend desarrolla las funcionalidades del servidor, la base de datos y la lógica, para que el sistema sea funcional.
+
+Coordinación:Usamos GitHub para subir avances, gestionar ramas y fusionar los cambios, garantizando que tanto el diseño como la funcionalidad estén alineados y se integren de forma coherente.
+
+Resultado esperado: El proyecto finaliza con una interfaz funcional y bien diseñada, respaldada por una lógica de servidor robusta.
+
+Este enfoque modular, con fases claras de diseño y desarrollo y el uso de herramientas colaborativas como GitHub, asegura un flujo de trabajo ágil y la integración continua de tareas.
+
 
 ## Conclusiones
 ...

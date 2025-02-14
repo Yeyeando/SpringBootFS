@@ -23,23 +23,23 @@
 13. [Conclusiones](#conclusiones)
 14. [Enlaces](#enlaces)
 
-## Introducción
+## 1. Introducción
 La eficiencia en los procesos de cocina es clave para el éxito de cualquier restaurante, y uno de los puntos más críticos es la comunicación entre el personal de sala y cocina. En muchos establecimientos, la toma de comandas y su envío a cocina puede resultar lenta, propensa a errores y generar retrasos en la atención al cliente. Ante esta necesidad, surge la idea de crear una aplicación que facilite el envío de comandas de manera simple, rápida y precisa.
 
 Esta app está pensada para restaurantes y bares de cualquier tamaño que busquen optimizar el flujo de trabajo entre el área de servicio y la cocina. Su objetivo es reducir los tiempos de espera, minimizar los errores en las comandas y mejorar la experiencia tanto para los clientes como para los empleados. Mediante una interfaz intuitiva, los camareros pueden enviar las órdenes directamente a la cocina con solo unos clics, garantizando que cada plato llegue de forma exacta y a tiempo.
 
 
-## Modelo de datos
+## 2. Modelo de datos
 
 Estos son los modelos utilizados para el desarrollo de la app
 
-### Diagrama E/R
+### 2.1 Diagrama E/R
 
 ![er_fastservicecoop](https://github.com/user-attachments/assets/8ce46e53-6411-41b0-b3ff-08d52a52e865)
 
 En este diagrama se aprecia todas las entidades de nuestra app. Tenemos a los camareros que atienden varias mesas, la mesa pide varios platos y los platos contienen varios ingredientes.
 
-### Diagrama UML
+### 2.2 Diagrama UML
 
 En el diagrama UML podemos apreciar todas las clases que debería tener la app junto a sus atributos y operaciones.
 
@@ -58,7 +58,7 @@ Los camareros tienen todas las funciones del CRUD.
 ![uml_fastservicecoop- ](https://github.com/user-attachments/assets/ecbdd08c-a927-4d45-abfc-3c168144a02e)
 
 
-### Diagrama Relacional
+### 2.3 Diagrama Relacional
 Aquí se aprecian todas las relaciones que existen entre cada entidad. En este diagrama se especifica la clave tanto única como foránea, y entidades que existen.
 
 Camarero(id_user, username, password)
@@ -66,7 +66,7 @@ Ingredientes(id_ingrediente, nombre)
 Platos(id_plato, nombre, id_mesa*)
 Contiene(id_plato*,id_ingrediente*, cantidad)
 Mesa(id_mesa, numero_mesa, disponibilidad, id_user*)
-## Requisitos de usuarios
+## 3. Requisitos de usuarios
 
 El usuario, para poder utilizar la aplicación, requiere principalmente un navegador web, conexión a internet y una cuenta de usuario activa.
 En lo que respecta al backend, es necesario disponer de los siguientes elementos:
@@ -87,12 +87,12 @@ Un IDE compatible con JavaScript y React.
 
 Por último, se requiere de una base de datos que podría ser  MySQL Workbench.
 
-## Casos de uso
+## 4. Casos de uso
 ![image](https://github.com/user-attachments/assets/035c4cc3-0fd1-4322-b107-119d9797d07c)
 
 
-## Descripción del sistema y especificaciones técnicas
-### Descripción general del sistema
+## 5. Descripción del sistema y especificaciones técnicas
+### 5.1 Descripción general del sistema
 
 FastService es una plataforma diseñada para optimizar la comunicación entre el personal de servicio y la cocina en restaurantes y bares, mejorando así la eficiencia y reduciendo posibles errores en los pedidos.
 
@@ -100,7 +100,7 @@ Frontend: Es una aplicación web interactiva desarrollada con React para ofrecer
 
 Backend: El servidor está construido utilizando Spring Boot y Java 17, gestionando la lógica de negocio y las interacciones con la base de datos MySQL.
 
-### Arquitectura del sistema
+### 5.2 Arquitectura del sistema
 Frontend:
 
 Tecnologías utilizadas: React, Vite, CSS/HTML.
@@ -116,7 +116,7 @@ Base de datos: MySQL.
 Repositorio de código disponible en GitHub.
 
 
-### Especificaciones técnicas
+### 5.3 Especificaciones técnicas
 Servidor: El sistema está alojado en un servidor compatible con Java y Spring Boot, y cuenta con una base de datos MySQL 8.
 
 Base de Datos: Relacional, con tablas que gestionan datos como Users, Exercises, Routines, entre otras.
@@ -127,11 +127,11 @@ Seguridad: Implementación de autenticación con JWT y almacenamiento seguro de 
 
 Pruebas: Se utilizan Vitest para la realización de pruebas en el frontend.
 
-## Interfaces
+## 6 Interfaces
 Diseño inicial en [figma](https://www.figma.com/proto/YmeJx71puwIhbEWP09SIhE/restaurapp?node-id=0-1&t=qjselpiCkZ9ZYgjU-1)
 
 
-### Usabilidad y accesibilidad
+### 5.1 Usabilidad y accesibilidad
 La aplicación ha sido diseñada con un enfoque en la usabilidad y accesibilidad, asegurando una experiencia inclusiva para todos los usuarios. Las medidas implementadas incluyen:
 
 Navegación en todas las páginas: La estructura permite una navegación fluida y consistente a través de todas las páginas.
@@ -153,20 +153,20 @@ Lenguaje claro: El lenguaje utilizado en el sitio es sencillo y accesible, asegu
 Prevención de errores: Se implementan medidas para prevenir errores comunes y proporcionar retroalimentación clara en caso de que ocurran.
 
 
-## Manuales
+## 7. Manuales
 [Manual de instalación](https://docs.google.com/document/d/1rraouQFESCmMG4oPHARUDBl10KeKk-BKeC2EWpplWso/edit?tab=t.0)  
 [Manual de usuario](https://docs.google.com/document/d/11mxM69mfPAsmIuoDagRmYYh0QC6FSdItTKOzNDq7ktE/edit?tab=t.0)
 
-## Tests
+## 8. Tests
 ...
 
-## Pila tecnológica
-### Frontend
+## 9. Pila tecnológica
+### 9.1 Frontend
 Tecnologías: React, HTML. CSS y Vite,
 
 Comunicación con el backend a través de APIs RESTful.
 
-### Backend
+### 9.2 Backend
 Tecnologías: Spring Boot, Java 17.
 
 Conexión a BBDD: MySQL.
@@ -176,7 +176,7 @@ Enlace del Repositorio Backend
 Seguridad: Autenticación con JWT.
 
 
-## Comparación de pila tecnológica
+## 10. Comparación de pila tecnológica
 Frontend: Se enfoca en la interacción del usuario, utilizando React para interfaces dinámicas y herramientas como Vite para optimización y rapidez en el desarrollo.
 
 Backend: Maneja la lógica de negocio y el almacenamiento de datos, utilizando Spring Boot para la construcción de APIs y Java 17 para asegurar estabilidad y rendimiento, con MySQL como base de datos relacional.
@@ -186,12 +186,12 @@ Autenticación: Se gestiona con JWT, con la misma base tecnológica (Java 17), p
 En resumen, el frontend está centrado en la experiencia del usuario, el backend en la lógica y gestión de datos, y la autenticación se maneja de manera segura con JWT sobre Java 17, asegurando la integridad y privacidad de las sesiones de los usuarios.
 
 
-## Repositorios
+## 11. Repositorios
 [Frontend](https://github.com/Yeyeando/FastServiceCoop)  
 
 [Backend](https://github.com/Yeyeando/SpringBootFS)
 
-## Planificación
+## 12. Planificación
 Fase de Bocetos (Pincel):
 
 Objetivo: Iniciar el proyecto visualizando ideas y conceptos preliminares.
@@ -231,10 +231,10 @@ Resultado esperado: El proyecto finaliza con una interfaz funcional y bien dise�
 Este enfoque modular, con fases claras de diseño y desarrollo y el uso de herramientas colaborativas como GitHub, asegura un flujo de trabajo ágil y la integración continua de tareas.
 
 
-## Conclusiones
+## 13. Conclusiones
 En conclusión, a lo largo de este proyecto hemos experimentado una notable evolución como equipo, fortaleciendo nuestra capacidad de trabajar colaborativamente y aprendiendo nuevas tecnologías de manera continua. Hemos logrado adquirir habilidades tanto en backend, utilizando Spring Boot y aprendiendo a conectar aplicaciones con bases de datos, como en frontend, con el uso de React y Vitest para garantizar la calidad del código. Este proceso no solo ha sido un reto técnico, sino también una oportunidad para mejorar nuestra capacidad de ser resolutivos, enfrentando desafíos y buscando soluciones de forma ágil y eficiente.
 
-## Enlaces
+## 14. Enlaces
 [Github](https://github.com/)  
 [SpringBoot](https://docs.spring.io/spring-boot/documentation.html)  
 [Node.js](https://nodejs.org/es/learn/getting-started/introduction-to-nodejs)  

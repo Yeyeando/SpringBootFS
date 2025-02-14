@@ -1,4 +1,85 @@
-**Introducción**
+# Indice
+1. [Introducción](#introducción)
+2. [Modelo de datos](#modelo-de-datos)
+    1. [Diagrama E/R](#diagrama-er)
+    2. [Diagrama UML](#diagrama-uml)
+    3. [Diagrama Relacional](#diagrama-relacional)
+3. [Requisitos de usuarios](#requisitos-de-usuarios)
+4. [Casos de uso](#casos-de-uso)
+5. [Descripción del sistema y especificaciones técnicas](#descripción-del-sistema-y-especificaciones-técnicas)
+    1. [Descripción general del sistema](#descripción-general-del-sistema)
+    2. [Arquitectura del sistema](#arquitectura-del-sistema)
+    3. [Especificaciones técnicas](#especificaciones-técnicas)
+6. [Interfaces](#interfaces)
+    1. [Usabilidad y accesibilidad](#usabilidad-y-accesibilidad)
+7. [Manuales](#manuales)
+8. [Tests](#tests)
+9. [Pila tecnológica](#pila-tecnológica)
+    1. [Frontend](#frontend)
+    2. [Backend](#backend)
+10. [Comparación de pila tecnológica](#comparación-de-pila-tecnológica)
+11. [Repositorios](#repositorios)
+12. [Planificación](#planificación)
+13. [Conclusiones](#conclusiones)
+14. [Enlaces](#enlaces)
 
-La eficiencia en los procesos de cocina es clave para el éxito de cualquier restaurante, y uno de los puntos más críticos es la comunicación entre el personal de sala y cocina. En muchos establecimientos, la toma de comandas y su envío a cocina puede resultar lenta, propensa a errores y generar retrasos en la atención al cliente. Ante esta necesidad, surge la idea de crear una aplicación que facilite el envío de comandas de manera simple, rápida y precisa.
-Esta app está pensada para restaurantes y bares de cualquier tamaño que busquen optimizar el flujo de trabajo entre el área de servicio y la cocina. Su objetivo es reducir los tiempos de espera, minimizar los errores en las comandas y mejorar la experiencia tanto para los clientes como para los empleados. Mediante una interfaz intuitiva, los camareros pueden enviar las órdenes directamente a la cocina con solo unos clics, garantizando que cada plato llegue de forma exacta y a tiempo.
+## Introducción
+...
+
+## Modelo de datos
+### Diagrama E/R
+...
+
+### Diagrama UML
+...
+
+### Diagrama Relacional
+...
+
+## Requisitos de usuarios
+...
+
+## Casos de uso
+...
+
+## Descripción del sistema y especificaciones técnicas
+### Descripción general del sistema
+...
+
+### Arquitectura del sistema
+...
+
+### Especificaciones técnicas
+...
+
+## Interfaces
+### Usabilidad y accesibilidad
+...
+
+## Manuales
+...
+
+## Tests
+...
+
+## Pila tecnológica
+### Frontend
+...
+
+### Backend
+...
+
+## Comparación de pila tecnológica
+...
+
+## Repositorios
+...
+
+## Planificación
+...
+
+## Conclusiones
+...
+
+## Enlaces
+...

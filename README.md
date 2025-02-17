@@ -155,7 +155,10 @@ Prevención de errores: Se implementan medidas para prevenir errores comunes y p
 
 ## 7. Manuales
 [Manual de instalación](https://docs.google.com/document/d/1rraouQFESCmMG4oPHARUDBl10KeKk-BKeC2EWpplWso/edit?tab=t.0)  
+
 [Manual de usuario](https://docs.google.com/document/d/11mxM69mfPAsmIuoDagRmYYh0QC6FSdItTKOzNDq7ktE/edit?tab=t.0)
+
+[Manual de ayuda](https://github.com/user-attachments/files/18831526/FastService.pdf)
 
 ## 8. Tests
 Para el frontend usamos Vitest para realizar los tests.

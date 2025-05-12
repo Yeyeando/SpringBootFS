@@ -40,6 +40,10 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Error: La contraseña debe contener al menos una letra minúscula, una letra mayúscula, un número y tener un mínimo de 8 caracteres.");
         }
 
+        if (user.getRole() == null || user.getRole().isBlank()) {
+            user.setRole("Camarero");
+        }
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.saveUser(user);
         return ResponseEntity.ok("Usuario registrado exitosamente.");
@@ -53,7 +57,8 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Error: Credenciales inválidas.");
         }
 
-        String token = jwtUtils.generateToken(user.getUsername());
+        String role = userOptional.get().getRole();
+        String token = jwtUtils.generateToken(user.getUsername(), role);
         return ResponseEntity.ok().body("{\"token\": \"" + token + "\"}");
     }
 }

@@ -17,10 +17,14 @@ public class UserEntity {
     @NotNull
     private String password;
 
-    public UserEntity(Long id, String username, String password) {
+    @NotNull
+    private String role = "Camarero";
+
+    public UserEntity(Long id, String username, String password, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.role = role != null ? role : "Camarero";
     }
 
     public UserEntity() {
@@ -50,4 +54,11 @@ public class UserEntity {
         this.password = password;
     }
 
+    public @NotNull String getRole() {
+        return role;
+    }
+
+    public void setRole(@NotNull String role) {
+        this.role = role;
+    }
 }

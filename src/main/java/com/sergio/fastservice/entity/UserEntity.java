@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 @Entity
-@Table (name = "users")
+@Table(name = "users")
 public class UserEntity {
 
     @Id
@@ -20,14 +20,19 @@ public class UserEntity {
     @NotNull
     private String role = "Camarero";
 
-    public UserEntity(Long id, String username, String password, String role) {
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id", referencedColumnName = "id")
+    private RestaurantsEntity restaurant;
+
+    public UserEntity() {
+    }
+
+    public UserEntity(Long id, String username, String password, String role, RestaurantsEntity restaurant) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.role = role != null ? role : "Camarero";
-    }
-
-    public UserEntity() {
+        this.restaurant = restaurant;
     }
 
     public Long getId() {
@@ -38,27 +43,35 @@ public class UserEntity {
         this.id = id;
     }
 
-    public @NotNull String getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(@NotNull String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public @NotNull String getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(@NotNull String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public @NotNull String getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(@NotNull String role) {
+    public void setRole(String role) {
         this.role = role;
+    }
+
+    public RestaurantsEntity getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(RestaurantsEntity restaurant) {
+        this.restaurant = restaurant;
     }
 }

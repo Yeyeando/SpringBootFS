@@ -34,7 +34,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody UserEntity userDetails) {
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody UserEntity userDetails, @RequestParam Long restaurantId) {
         Optional<UserEntity> user = userService.getUserById(id);
 
         if (user.isPresent()) {
@@ -47,7 +47,9 @@ public class UserController {
 
             updatedUser.setPassword(userDetails.getPassword());
 
-            userService.saveUser(updatedUser);
+            // Aquí asignamos el restaurante al usuario
+            userService.saveUser(updatedUser, restaurantId);
+
             return ResponseEntity.ok("Usuario actualizado exitosamente.");
         }
 

@@ -24,14 +24,19 @@ public class TablesEntity {
     @JsonIgnore
     private List<DishesEntity> dishes;
 
-    public TablesEntity(Long id, int number, boolean availability, List<DishesEntity> dishes) {
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id", nullable = false)
+    private RestaurantsEntity restaurant;
+
+    public TablesEntity() {
+    }
+
+    public TablesEntity(Long id, int number, boolean availability, List<DishesEntity> dishes, RestaurantsEntity restaurant) {
         this.id = id;
         this.number = number;
         this.availability = availability;
         this.dishes = dishes;
-    }
-
-    public TablesEntity() {
+        this.restaurant = restaurant;
     }
 
     public Long getId() {
@@ -64,5 +69,13 @@ public class TablesEntity {
 
     public void setDishes(List<DishesEntity> dishes) {
         this.dishes = dishes;
+    }
+
+    public RestaurantsEntity getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(RestaurantsEntity restaurant) {
+        this.restaurant = restaurant;
     }
 }

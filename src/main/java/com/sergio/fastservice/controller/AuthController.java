@@ -31,22 +31,29 @@ public class AuthController {
     );
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody @Valid UserEntity user) {
-        if (userService.getUserByUsername(user.getUsername()).isPresent()) {
-            return ResponseEntity.badRequest().body("Error: El nombre de usuario ya está en uso.");
-        }
+    public ResponseEntity<String> registerUser(@RequestBody @Valid UserEntity user, @RequestParam Long restaurantId) {
+        try {
+            if (userService.getUserByUsername(user.getUsername()).isPresent()) {
+                return ResponseEntity.badRequest().body("Error: El nombre de usuario ya está en uso.");
+            }
 
-        if (!PASSWORD_PATTERN.matcher(user.getPassword()).matches()) {
-            return ResponseEntity.badRequest().body("Error: La contraseña debe contener al menos una letra minúscula, una letra mayúscula, un número y tener un mínimo de 8 caracteres.");
-        }
+            if (!PASSWORD_PATTERN.matcher(user.getPassword()).matches()) {
+                return ResponseEntity.badRequest().body("Error: La contraseña debe contener al menos una letra minúscula, una letra mayúscula, un número y tener un mínimo de 8 caracteres.");
+            }
 
-        if (user.getRole() == null || user.getRole().isBlank()) {
-            user.setRole("Camarero");
-        }
+            if (user.getRole() == null || user.getRole().isBlank()) {
+                user.setRole("Camarero");
+            }
 
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userService.saveUser(user);
-        return ResponseEntity.ok("Usuario registrado exitosamente.");
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+            // Llamamos al servicio y pasamos el restaurantId
+            userService.saveUser(user, restaurantId);  // Cambiamos el servicio para aceptar el restaurantId
+
+            return ResponseEntity.ok("Usuario registrado exitosamente.");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());  // Captura el error y devuelve el mensaje
+        }
     }
 
     @PostMapping("/login")

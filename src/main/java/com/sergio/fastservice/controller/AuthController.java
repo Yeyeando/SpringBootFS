@@ -1,5 +1,6 @@
 package com.sergio.fastservice.controller;
 
+import com.sergio.fastservice.dto.RegistrationRequest;
 import com.sergio.fastservice.entity.UserEntity;
 import com.sergio.fastservice.security.JWTUtils;
 import com.sergio.fastservice.service.UserService;
@@ -27,32 +28,32 @@ public class AuthController {
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     private static final Pattern PASSWORD_PATTERN = Pattern.compile(
-            "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$"
+            "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$"	
     );
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody @Valid UserEntity user, @RequestParam Long restaurantId) {
+    public ResponseEntity<String> registerUser(@RequestBody @Valid RegistrationRequest request) {
         try {
-            if (userService.getUserByUsername(user.getUsername()).isPresent()) {
+            if (userService.getUserByUsername(request.getUsername()).isPresent()) {
                 return ResponseEntity.badRequest().body("Error: El nombre de usuario ya está en uso.");
             }
 
-            if (!PASSWORD_PATTERN.matcher(user.getPassword()).matches()) {
+            if (!PASSWORD_PATTERN.matcher(request.getPassword()).matches()) {
                 return ResponseEntity.badRequest().body("Error: La contraseña debe contener al menos una letra minúscula, una letra mayúscula, un número y tener un mínimo de 8 caracteres.");
             }
 
-            if (user.getRole() == null || user.getRole().isBlank()) {
-                user.setRole("Camarero");
-            }
+            String role = request.getRole() == null || request.getRole().isBlank() ? "Camarero" : request.getRole();
 
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            UserEntity user = new UserEntity();
+            user.setUsername(request.getUsername());
+            user.setPassword(passwordEncoder.encode(request.getPassword()));
+            user.setRole(role);
 
-            // Llamamos al servicio y pasamos el restaurantId
-            userService.saveUser(user, restaurantId);  // Cambiamos el servicio para aceptar el restaurantId
+            userService.saveUser(user, request.getRestaurantId());
 
             return ResponseEntity.ok("Usuario registrado exitosamente.");
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());  // Captura el error y devuelve el mensaje
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 

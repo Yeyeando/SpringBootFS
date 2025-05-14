@@ -8,6 +8,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import java.util.Collections;
 
 
 
@@ -66,8 +68,9 @@ public class JWTUtils {
 
     public Authentication getAuthentication(String token) {
         String username = getUsernameFromToken(token);
-        return new UsernamePasswordAuthenticationToken(username, null, null);
+        return new UsernamePasswordAuthenticationToken(username, null, Collections.emptyList());
     }
+
 
     public String getUsernameFromToken(String token) {
         Claims claims = getClaims(token);

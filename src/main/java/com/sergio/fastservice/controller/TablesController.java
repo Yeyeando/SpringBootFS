@@ -2,9 +2,12 @@ package com.sergio.fastservice.controller;
 
 import com.sergio.fastservice.entity.RestaurantsEntity;
 import com.sergio.fastservice.entity.TablesEntity;
+import com.sergio.fastservice.entity.UserEntity;
 import com.sergio.fastservice.repository.RestaurantsRepository;
 import com.sergio.fastservice.service.TablesService;
+import com.sergio.fastservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,14 +17,31 @@ import java.util.*;
 @RequestMapping("/tables")
 public class TablesController {
 
+    private final UserService userService;
     private final TablesService tablesService;
     private final RestaurantsRepository restaurantsRepository;
 
     @Autowired
-    public TablesController(TablesService tablesService, RestaurantsRepository restaurantsRepository) {
+    public TablesController(TablesService tablesService, RestaurantsRepository restaurantsRepository, UserService userService) {
         this.tablesService = tablesService;
         this.restaurantsRepository = restaurantsRepository;
+        this.userService = userService;
     }
+
+    @GetMapping("/my-restaurant")
+    public ResponseEntity<List<TablesEntity>> getTablesForLoggedUser(@RequestParam Long userId) {
+        Optional<UserEntity> userOpt = userService.getUserById(userId);
+
+        if (userOpt.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        Long restaurantId = userOpt.get().getRestaurant().getId();
+        List<TablesEntity> tables = tablesService.getTablesByRestaurantId(restaurantId);
+
+        return ResponseEntity.ok(tables);
+    }
+
 
     @GetMapping
     public List<TablesEntity> getAllTables() {

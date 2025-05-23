@@ -57,7 +57,8 @@ La mesa tiene las funciones de leer, eliminar o añadir una mesa.
 Los camareros tienen todas las funciones del CRUD.
 
 
-![uml_fastservicecoop- ](https://github.com/user-attachments/assets/5bbd9f1f-4687-4a29-a705-b5fc2932a335)
+![uml_fastservicecoop- ](https://github.com/user-attachments/assets/f3b22508-a3c1-4da4-999d-3c80f1b53513)
+
 
 
 

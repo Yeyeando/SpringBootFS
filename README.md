@@ -66,11 +66,12 @@ Los camareros tienen todas las funciones del CRUD.
 ### 2.3 Diagrama Relacional
 Aquí se aprecian todas las relaciones que existen entre cada entidad. En este diagrama se especifica la clave tanto única como foránea, y entidades que existen.
 
-Camarero(id_user, username, password)
+Camarero(id_usuario, nombre, contraseña, id_restaurante*)
+Restaurante(id_restaurante, nombre, ubicación)
 Ingredientes(id_ingrediente, nombre)
 Platos(id_plato, nombre, id_mesa*)
 Contiene(id_plato*,id_ingrediente*, cantidad)
-Mesa(id_mesa, numero_mesa, disponibilidad, id_user*)
+Mesa(id_mesa, numero_mesa, disponibilidad, id_restaurante*)
 ## 3. Requisitos de usuarios
 
 El usuario, para poder utilizar la aplicación, requiere principalmente un navegador web, conexión a internet y una cuenta de usuario activa.

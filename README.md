@@ -45,7 +45,13 @@ En este diagrama se aprecia todas las entidades de nuestra app. Tenemos a los ca
 
 En el diagrama UML podemos apreciar todas las clases que debería tener la app junto a sus atributos y operaciones.
 
-Ahora podemos ver que los ingredientes  tiene funciones públicas para obtener el conjunto o un solo ingrediente específico.
+Primero se puede apreciar que los camareros tienen funciones para lo que sería el registro y el login y además tiene la función obtener mesas para mostrar solo las mesas del restaurante al que pertenezca.
+
+En restaurante tenemos las funciones básicas del CRUD.
+
+La mesa tiene las funciones de leer, eliminar o añadir una mesa.
+
+Los ingredientes tienen funciones públicas para obtener el conjunto o un solo ingrediente específico.
 
 En platos, se aprecia que a parte de obtener los platos, tiene una función para abrir el modificador del plato.
 
@@ -53,8 +59,6 @@ Contiene es el que muestra las modificaciones del plato y te permite hacer un CR
 
 La clase pedido tiene operaciones para enviar el pedido a cocina o eliminar el pedido a parte de cargar todos los platos del pedido.
 
-La mesa tiene las funciones de leer, eliminar o añadir una mesa.
-Los camareros tienen todas las funciones del CRUD.
 
 
 ![image](https://github.com/user-attachments/assets/526d7d48-9383-4ed3-9677-dfb98d47715f)
@@ -65,8 +69,8 @@ Los camareros tienen todas las funciones del CRUD.
 ### 2.3 Diagrama Relacional
 Aquí se aprecian todas las relaciones que existen entre cada entidad. En este diagrama se especifica la clave tanto única como foránea, y entidades que existen.
 
-Camarero(id_usuario, nombre, contraseña, id_restaurante*)
 Restaurante(id_restaurante, nombre, ubicación)
+Camarero(id_usuario, nombre, contraseña, id_restaurante*)
 Ingredientes(id_ingrediente, nombre)
 Platos(id_plato, nombre, id_mesa*)
 Contiene(id_plato*,id_ingrediente*, cantidad)

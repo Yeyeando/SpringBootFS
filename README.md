@@ -35,9 +35,11 @@ Estos son los modelos utilizados para el desarrollo de la app
 
 ### 2.1 Diagrama E/R
 
-![er_fastservicecoop](https://github.com/user-attachments/assets/8ce46e53-6411-41b0-b3ff-08d52a52e865)
+![er_fastservicecoop](https://github.com/user-attachments/assets/af46bc26-d20e-4549-b99e-8a00a6a54c3d)
 
-En este diagrama se aprecia todas las entidades de nuestra app. Tenemos a los camareros que atienden varias mesas, la mesa pide varios platos y los platos contienen varios ingredientes.
+
+
+En este diagrama se aprecia todas las entidades de nuestra app. Tenemos a los camareros que pertenecen a un restaurante, cada restaurante contiene mesas,en cada mesa se pide varios platos y los platos contienen varios ingredientes.
 
 ### 2.2 Diagrama UML
 
@@ -55,17 +57,21 @@ La mesa tiene las funciones de leer, eliminar o añadir una mesa.
 Los camareros tienen todas las funciones del CRUD.
 
 
-![uml_fastservicecoop- ](https://github.com/user-attachments/assets/ecbdd08c-a927-4d45-abfc-3c168144a02e)
+![uml_fastservicecoop- ](https://github.com/user-attachments/assets/f3b22508-a3c1-4da4-999d-3c80f1b53513)
+
+
+
 
 
 ### 2.3 Diagrama Relacional
 Aquí se aprecian todas las relaciones que existen entre cada entidad. En este diagrama se especifica la clave tanto única como foránea, y entidades que existen.
 
-Camarero(id_user, username, password)
+Camarero(id_usuario, nombre, contraseña, id_restaurante*)
+Restaurante(id_restaurante, nombre, ubicación)
 Ingredientes(id_ingrediente, nombre)
 Platos(id_plato, nombre, id_mesa*)
 Contiene(id_plato*,id_ingrediente*, cantidad)
-Mesa(id_mesa, numero_mesa, disponibilidad, id_user*)
+Mesa(id_mesa, numero_mesa, disponibilidad, id_restaurante*)
 ## 3. Requisitos de usuarios
 
 El usuario, para poder utilizar la aplicación, requiere principalmente un navegador web, conexión a internet y una cuenta de usuario activa.

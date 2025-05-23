@@ -35,7 +35,8 @@ Estos son los modelos utilizados para el desarrollo de la app
 
 ### 2.1 Diagrama E/R
 
-![er_fastservicecoop](https://github.com/user-attachments/assets/f1af727f-17d1-4730-b212-3d09bb583bd5)
+![er_fastservicecoop](https://github.com/user-attachments/assets/af46bc26-d20e-4549-b99e-8a00a6a54c3d)
+
 
 
 En este diagrama se aprecia todas las entidades de nuestra app. Tenemos a los camareros que atienden varias mesas, la mesa pide varios platos y los platos contienen varios ingredientes.

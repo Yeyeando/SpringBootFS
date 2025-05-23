@@ -39,7 +39,7 @@ Estos son los modelos utilizados para el desarrollo de la app
 
 
 
-En este diagrama se aprecia todas las entidades de nuestra app. Tenemos a los camareros que atienden varias mesas, la mesa pide varios platos y los platos contienen varios ingredientes.
+En este diagrama se aprecia todas las entidades de nuestra app. Tenemos a los camareros que pertenecen a un restaurante, cada restaurante contiene mesas,en cada mesa se pide varios platos y los platos contienen varios ingredientes.
 
 ### 2.2 Diagrama UML
 

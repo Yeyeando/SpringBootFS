@@ -1,5 +1,6 @@
 package com.sergio.fastservice.controller;
 
+import com.sergio.fastservice.dto.LoginResponse;
 import com.sergio.fastservice.dto.RegistrationRequest;
 import com.sergio.fastservice.entity.UserEntity;
 import com.sergio.fastservice.security.JWTUtils;
@@ -65,8 +66,12 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Error: Credenciales inválidas.");
         }
 
-        String role = userOptional.get().getRole();
-        String token = jwtUtils.generateToken(user.getUsername(), role);
-        return ResponseEntity.ok().body("{\"token\": \"" + token + "\"}");
+        UserEntity authenticatedUser = userOptional.get();
+        String role = authenticatedUser.getRole();
+        String token = jwtUtils.generateToken(authenticatedUser.getUsername(), role);
+
+        LoginResponse loginResponse = new LoginResponse(token, authenticatedUser.getId());
+
+        return ResponseEntity.ok(loginResponse);
     }
 }
